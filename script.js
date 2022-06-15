@@ -14,23 +14,23 @@ const nextBtn = document.getElementById('next');
 const songs = [
     {
         name: 'Korean1',
-        displayName: 'Korean Music',
-        artist: 'ABC'
+        displayName: 'Korean Music 1',
+        artist: 'ABC 1'
     },
     {
         name: 'Korean2',
-        displayName: 'Korean Music',
-        artist: 'ABC'
+        displayName: 'Korean Music 2',
+        artist: 'ABC 2'
     },
     {
         name: 'Korean3',
-        displayName: 'Korean Music',
-        artist: 'ABC'
+        displayName: 'Korean Music 3',
+        artist: 'ABC 3'
     },
     {
         name: 'Korean4',
-        displayName: 'Korean Music',
-        artist: 'ABC'
+        displayName: 'Korean Music 4',
+        artist: 'ABC 4'
     },
 
 ];
