@@ -10,6 +10,19 @@ const prevBtn = document.getElementById('prev');
 const playBtn = document.getElementById('play');
 const nextBtn = document.getElementById('next');
 
+// Playlist 1
+imageVN = document.querySelector('img');
+const titleVN = document.getElementById('titleVN');
+const artistVN = document.getElementById('artistVN');
+const musicVN = document.querySelector('audioVN');
+const progressContainerVN = document.getElementById('progress-containerVN');
+const progressVN = document.getElementById('progressVN');
+const currentTimeElVN = document.getElementById('current-timeVN');
+const durationElVN = document.getElementById('durationVN');
+const prevBtnVN = document.getElementById('prevVN');
+const playBtnVN = document.getElementById('playVN');
+const nextBtnVN = document.getElementById('nextVN');
+
 // Music
 const songs = [
     {
@@ -35,15 +48,48 @@ const songs = [
 
 ];
 
+// PlaylistVN
+const songsvn = [
+    {
+        name: 'VN1',
+        displayName: 'CUỘC SỐNG EM ỔN KHÔNG - ANH TÚ',
+        artist: 'ABC 1'
+    },
+    {
+        name: 'VN2',
+        displayName: 'Để Cho Em Khóc (Vali Tình Yêu OST)',
+        artist: 'ABC 2'
+    },
+    {
+        name: 'VN3',
+        displayName: 'DaTungVoGia - MrSiro',
+        artist: 'ABC 3'
+    },
+    {
+        name: 'VN4',
+        displayName: 'ĐÁNH MẤT EM (MV OFFICIAL) - QUANG ĐĂNG TRẦN X ProD. JvN DUSK MUSIC',
+        artist: 'ABC 4'
+    },
+
+];
+
 // Check if playing
 let isPlaying = false;
 
-// Play
+// Play Korean songs
 function playSong() {
     isPlaying = true;
     playBtn.classList.replace('fa-play','fa-pause');
     playBtn.setAttribute('title', 'Pause');
     music.play();
+}
+
+// Play Vietnamese songs
+function playSongVN() {
+    isPlaying = true;
+    playBtnVN.classList.replace('fa-play','fa-pause');
+    playBtnVN.setAttribute('titleVN', 'Pause');
+    musicVN.play();
 }
 
 // Pause
@@ -54,8 +100,18 @@ function pauseSong() {
     music.pause();
 }
 
+// Pause VN Songs
+
+function pauseSongVN() {
+    isPlaying = false;
+    playBtnVN.classList.replace('fa-pause','fa-play');
+    playBtnVN.setAttribute('titleVN', 'Play');
+    musicVN.pause();
+}
+
 // Play or Pause Event Listenter
 playBtn.addEventListener('click', () => (isPlaying ? pauseSong() : playSong()));
+playBtnVN.addEventListener('click', () => (isPlaying ? pauseSongVN() : playSongVN()));
 
 
 // Update DOM
@@ -64,6 +120,13 @@ function loadSong(song) {
     artist.textContent = song.artist;
     music.src = `music/${song.name}.mp3`;
     image.src = `img/${song.name}.jpg`;
+}
+
+function loadSongVN(songsvn) {
+    titleVN.textContent = songsvn.displayName;
+    artistVN.textContent = songsvn.artist;
+    musicVN.src = `musicVn/${songsvn.name}.mp3`;
+    //imageVN.src = `img/${songsvn.name}.jpg`;
 }
 
 //Current song
@@ -92,6 +155,7 @@ function prevSong() {
 
 // On Load - Select First Song
 loadSong(songs[songIndex]);
+//loadSongVN(songsvn[songIndex]);
 
 // Update Progress Bar & Time
 function updateProgressBar(e) {
